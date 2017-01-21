@@ -14,8 +14,8 @@ import UIKit
 private var kDelegate = "ReturnDelegate"
 extension UITextField {
     /**
-     创建代理，如果是第一次访问则创建，并设置self.delegate，所以会把之前的delegate覆盖，如果有的话。
-     **/
+    创建代理，如果是第一次访问则创建，并设置self.delegate，所以会把之前的delegate覆盖，如果有的话。
+    **/
     var return_delegate: ReturnTextFieldDelegate {
         get{
             if let delegate = objc_getAssociatedObject(self, &kDelegate) as? ReturnTextFieldDelegate {
@@ -35,7 +35,7 @@ extension UITextField {
 
 /**
  扩展TextFieldDelegate
- **/
+**/
 class ReturnTextFieldDelegate: NSObject, UITextFieldDelegate {
     fileprivate var nexts: Array<UIView> = []
     fileprivate var onReturn: ((_ textField: UITextField) -> (Bool))?
@@ -104,12 +104,12 @@ class ReturnTextFieldDelegate: NSObject, UITextFieldDelegate {
             if let nextTextField = control as? UITextField {
                 textField.resignFirstResponder()
                 nextTextField.becomeFirstResponder()
-                returnValue = false //必须返回false
+                returnValue =  false //必须返回false
             }
             else if let nextTextView = control as? UITextView {
                 textField.resignFirstResponder()
                 nextTextView.becomeFirstResponder()
-                returnValue = false
+                returnValue =  false
             }
             else if let button = control as? UIButton, button.isEnabled { //当按钮处于激活状态下才可发送事件
                 button.sendActions(for: .touchUpInside)
